@@ -1,0 +1,86 @@
+create file shareing with storage container
+
+create 1 window VM 
+connect with RDP of that same window VM 
+open poweshell CLI command
+
+create one storage with unique name (in search bar box type storage where you will get storage account icon click on that icon and create a storage account)
+in the same storage which created 	go to file share inside drop down menu of data storage at most left pannel
+click on +fileshare option button on top  and give a name
+click on Next:Backup button and uncheck the "enable backup checkbox" and click on review+create then click on create button
+after successfully create fileshare click on connect button .
+There one connect window will open click on Show script and click on bottom copy icon to copy the complete script .
+
+go to poweshell CLI command which open in RDP and paste complete script there and enter and see the output like below it will come
+CMDKEY: Credential added successfully.
+
+Name           Used (GB)     Free (GB) Provider      Root                                               CurrentLocation
+----           ---------     --------- --------      ----                                               ---------------
+Z                   0.00     102400.00 FileSystem    \\uday1234.file.core.windows.net...
+PS C:\Windows\system32>
+
+now go to this pc and check there new drive with same name as above in output will available.there u can create any file or folder that will be sync with fileshare storage. you can check in fileshare storage>>browse that file or folder should be there .
+
+
+
+create a pipeline in jenkins 
+like create project in same manner have to create pipeline give 1 name of project (i.e. project1/2/3/4)
+select pipeline option and click on ok button scroll the window and go to script box where you can select Hello world for  create stage
+here you can make multiple stages as u want like below
+
+stage('stage1') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+stage('stage2') {
+            steps {
+                echo 'I am Uday'
+            }
+        }
+stage('stage3') {
+            steps {
+                echo 'How are you'
+            }
+        }
+Then click on apply then save
+after that click on build now and check the build status .
+if status is success check stages and click on every stages green tick mark button to check that stages are correctly build.
+
+below is one pipeline sample code 
+pipeline {
+    agent any
+
+    stages {
+        stage('Stage1') {
+            steps {
+                echo 'Clone GitHub Repository'
+git branch: 'main', url:"https://github.com/uday007shankar-sys/classwebsite4.git"
+            }
+        }
+stage('Stage2') {
+            steps {
+                echo 'List all files in Jenkins Workspace folder'
+sh'''
+cd /var/lib/jenkins/workspace/project1/
+ls -l
+
+'''
+            }
+        }
+stage('Stage3') {
+            steps {
+                echo 'Pipeline Successfully executed'
+            }
+        }
+stage('Stage4') {
+            steps {
+                echo 'Print todays calender'
+sh'''
+date
+
+'''
+            }
+        }
+    }
+}
