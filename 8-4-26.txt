@@ -1,0 +1,20 @@
+root@server1:~/classwebsite4# history
+    8  	
+    9  sh get-docker.sh
+   10  docker pull nginx
+   11  docker images
+   12  docker run -p 80:80 nginx
+   13  git clone https://github.com/uday007shankar-sys/classwebsite4.git
+   14  ls -l
+   15  cd classwebsite4/
+   16  ls -l
+   17  docker build -t app1 .
+   18  docker images 
+   19  docker run -p 80:80 app1
+   20  history
+root@server1:~/classwebsite4# 
+
+cat Dockerfile 
+FROM nginx
+COPY . /usr/share/nginx/html
+root@server1:~/classwebsite4# 
